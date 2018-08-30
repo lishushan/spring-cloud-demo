@@ -1,7 +1,5 @@
 # 基础镜像：仓库是java，tag是8
 FROM java:8
-# TODO
-RUN  apk update && apk upgrade && apk add netcat-openbsd
 # 容器对外暴露9000端口
 EXPOSE 9000
 # 创建目录
