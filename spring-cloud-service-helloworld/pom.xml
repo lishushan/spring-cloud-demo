@@ -30,6 +30,11 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <docker.image.name>spring-cloud-service-helloworld</docker.image.name>
+        <docker.image.tag>1.0.0</docker.image.tag>
+    </properties>
+
     <build>
         <plugins>
             <!-- Spring boot maven plugin -->
@@ -37,6 +42,31 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- copy docker file -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/dockerfile</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/docker</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin -->
             <plugin>
                 <groupId>com.spotify</groupId>
@@ -44,9 +74,9 @@
                 <version>1.1.1</version>
                 <configuration>
                     <!-- 镜像名 -->
-                    <imageName>spring-cloud-service-helloworld</imageName>
+                    <imageName>${docker.image.name}:${docker.image.tag}</imageName>
                     <!-- 指定Dockerfile所在的路径 -->
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <dockerDirectory>${basedir}/target/dockerfile</dockerDirectory>
                     <!-- 使用Dockerfile创建Docker镜像 -->
                     <resources>
                         <resource>
