@@ -8,7 +8,7 @@
 app:
   property:
     log-path: /mycloud/spring-cloud-service-helloworld/logs
-    env: LOCAL-DEFAULT
+    env: DEFAULT
 
 ## Server Info
 server:
