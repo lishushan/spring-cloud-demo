@@ -23,11 +23,11 @@
         </encoder>
     </appender>
 
-    <logger name="com.mycloud.demo" level="DEBUG">
+    <logger name="com.mycloud.demo" level="INFO">
         <appender-ref ref="FILE1"/>
     </logger>
 
-    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG">
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="INFO">
         <appender-ref ref="FILE1"/>
     </logger>
 
