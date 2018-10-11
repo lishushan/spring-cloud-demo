@@ -1,3 +1,9 @@
+## 1. Spring框架实现了一种用于解析属性的层次结构机制，当Spring执行属性解析时，始终先去查找默认属性，
+##    然后用特定环境的属性（如果存在）去覆盖默认属性。
+## 2. 运行时可以指定特定的环境：
+##    java -jar -Dspring.profiles.active=dev xxx.jar
+##    nohup java -Xms128m -Xmx512m -jar -Dspring.profiles.active=dev xxx.jar > /dev/null 2>&1 &
+
 ## App property info
 app:
   property:
