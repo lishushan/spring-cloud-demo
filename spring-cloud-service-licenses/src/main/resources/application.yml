@@ -1,0 +1,40 @@
+## App property info
+app:
+  property:
+    log-path: /mycloud/spring-cloud-service-licenses/logs
+    env: LOCAL-DEFAULT
+
+## Server Info
+server:
+  port: 9002
+  servlet:
+    context-path: /licenses
+
+## Spring config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.2.225:3306/licenses-default?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: DBAdmin
+    password: 20546737
+    # Enable DDL Initialization
+    schema: classpath:schema.sql # Schema (DDL) script resource references.
+    schema-username: DBAdmin # Username of the database to execute DDL scripts (if different).
+    schema-password: 20546737 # Password of the database to execute DDL scripts (if different).
+    # Enable DML Initialization
+    data: classpath:data.sql # Data (DML) script resource references.
+    data-username: DBAdmin # Username of the database to execute DML scripts (if different).
+    data-password: 20546737 # Password of the database to execute DML scripts (if different).
+    initialization-mode: always # default is embedded, we should change it to 'always'
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update #create, create-drop, update
+    show-sql: true
+
+# Redis info
+redis:
+  server: redis
+  redis.port: 6379
+signing:
+  key: 345345fsdfsf5345
