@@ -1,0 +1,4 @@
+## App property info
+app:
+  property:
+    env: DEV

@@ -1,0 +1,9 @@
+## Application config
+app:
+  property:
+    env: DEV
+
+## Spring config
+spring:
+  datasource:
+    jdbc-url: jdbc:mysql://192.168.2.225:3306/licenses-dev?useUnicode=true&characterEncoding=utf-8&useSSL=false
