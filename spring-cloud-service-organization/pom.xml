@@ -5,25 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycloud.demo</groupId>
-    <artifactId>spring-cloud-server-config</artifactId>
+    <artifactId>spring-cloud-service-organization</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>spring-cloud-server-config</name>
-    <description>Spring Cloud Configuration Server.</description>
+    <name>spring-cloud-service-organization</name>
+    <description>Organization Spring Cloud service.</description>
 
-    <!-- Spring Boot configuration -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.0.RELEASE</version>
     </parent>
 
-    <!-- Spring Cloud configuration -->
-    <!-- 在Maven中dependencyManagement的作用其实相当于一个对所依赖jar包进行版本管理的管理器，它本身不引入jar包 -->
-    <!-- 如果dependencies里的dependency自己没有声明version元素，那么maven就会倒dependencyManagement里面去找有没有对该
-    artifactId和groupId进行过版本声明，如果有，就继承它，如果没有就会报错，告诉你必须为dependency声明一个version -->
-    <!-- 如果dependencies中的dependency声明了version，那么无论dependencyManagement中有无对该jar的version声明，
-    都以dependency里的version为准。-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -37,21 +30,50 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Spring Cloud: config server -->
+        <!-- Spring boot starter: web -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- Spring Boot Start: config -->
+        <!-- Spring boot starter: data jpa -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- Spring boot starter: actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- Spring boot starter: config -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
+        <!-- Spring boot starter: config client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <!-- Spring boot security: RSA -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-rsa</artifactId>
+        </dependency>
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
-
     <properties>
-        <docker.image.name>spring-cloud-server-config</docker.image.name>
+        <docker.image.name>spring-cloud-service-organization</docker.image.name>
         <docker.image.tag>1.0.0</docker.image.tag>
     </properties>
 
@@ -61,6 +83,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
             </plugin>
 
             <!-- copy docker file -->

@@ -1,7 +1,7 @@
-package com.mycloud.demo.controllers;
+package com.mycloud.demo.controller;
 
 import com.mycloud.demo.model.License;
-import com.mycloud.demo.services.LicenseService;
+import com.mycloud.demo.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

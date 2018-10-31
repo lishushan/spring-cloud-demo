@@ -1,4 +1,4 @@
-package com.mycloud.demo.services;
+package com.mycloud.demo.service;
 
 import com.mycloud.demo.config.ServiceConfig;
 import com.mycloud.demo.model.License;
